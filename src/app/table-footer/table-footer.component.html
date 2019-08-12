@@ -1,0 +1,7 @@
+<div class="pagination">
+  <button (click) = "isSelect(selected-1)" [disabled]="selected===0">&laquo;</button>
+  <a (click)="isSelect(index)" [ngClass]="{'active': selected === index}" *ngFor="let index of totalPagesCount">
+    {{index+1}}
+  </a>
+  <button (click) = "isSelect(selected+1)" [disabled]="selected===totalPagesCount.length-1">&raquo;</button>
+</div>

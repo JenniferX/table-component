@@ -1,0 +1,60 @@
+.table-container
+    margin: 15px
+    width: 100%
+    max-width: 98%
+    max-height: 700px
+    overflow: auto
+
+table
+    max-width: 100%
+    border-collapse: collapse
+    table-layout: fixed
+    overflow-y: auto
+    height: 30vh
+
+thead,tfooter
+    display: table
+
+
+tbody
+    height: 500px
+    overflow: auto
+    overflow-x: hidden
+    display: block
+    width: 100%
+    &tr 
+        display: table
+        table-layout: fixed
+
+th,td
+    padding: 12px
+    text-align: left
+    min-width: 320px
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+
+tr:nth-child(even)
+    background-color: #f2f2f2
+
+th    
+    background-color: #4CAF50
+    color: white
+
+.select-block
+    margin: 15px
+
+select
+    margin-left: 15px
+    width: 100px
+    border-radius: 5px
+    padding: 8px
+
+select:focus
+    outline: none !important
+
+no-padding-left
+    padding-left: 0
+
+.action
+    min-width: 50px !important

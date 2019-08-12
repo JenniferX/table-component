@@ -1,0 +1,35 @@
+<div class="select-block">
+  <label for="">Items Per Page</label>
+  <select [(ngModel)]="selectedOption" (ngModelChange)="selectionChange(selectedOption)">
+    <option [value]="option" *ngFor="let option of [25,50,75,150]">{{option}}</option>
+  </select>
+</div>
+<div class="table-container">
+  <table *ngIf="tableData">
+    <thead>
+      <tr>
+        <th class="action">Action</th>
+        <th *ngFor="let col of tableHeaderCol">
+          {{col.name}}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of displayCurrentTableData; let i = index">
+        <td class="action">
+          <button (click)="submit(row)">submit</button>
+        </td>
+        <td *ngFor="let col of tableHeaderCol">
+           {{ row[col.id] }}
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr class="no-padding-left">
+        <td colspan="6">
+          <app-table-footer (paginationChange)="setOffset($event)" [(totalPageCount)]="totalPageCount"></app-table-footer>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
