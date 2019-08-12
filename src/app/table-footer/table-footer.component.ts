@@ -18,13 +18,16 @@ export class TableFooterComponent implements OnInit, OnChanges {
     this.totalPagesCount = [];
     this.selected = 0;
     if (changes.totalPageCount) {
+      // create an array for pagination
       const length = changes.totalPageCount.currentValue;
       for (let i = 0; i < length; i++) {
         this.totalPagesCount.push(i);
       }
     }
   }
+
   isSelect(index) {
+    // sent pagnation selection to table component
     this.selected = index;
     this.paginationChange.emit({offset: index});
   }

@@ -22,6 +22,7 @@ export class TableComponent implements OnInit {
     this.getTableData();
   }
   getTableData() {
+    // get whole table data
     this.httpService.getServiceRequest('getTableData').subscribe((data) => {
       this.tableData = data;
       this.selectionChange(this.selectedOption);
@@ -31,6 +32,7 @@ export class TableComponent implements OnInit {
 
   setTableHeaderCol(data) {
     this.tableHeaderCol = [];
+    // set table head name
     Object.keys(data[0]).forEach(element => {
       this.tableHeaderCol.push({
         id: element,
@@ -40,18 +42,21 @@ export class TableComponent implements OnInit {
   }
 
   setTableConfig(selectOption, offset) {
+    // display the table from start index to end index depends on the seleciton of pagination.
     this.startItemPerPage =  offset * selectOption;
     this.endItemPerPage = this.startItemPerPage + selectOption;
     this.displayCurrentTableData = this.tableData.slice(this.startItemPerPage , this.endItemPerPage);
   }
 
   selectionChange(selectedOption) {
+    // when selection of item per page is changed, recalculate the first index and last index of view
     this.selectedOption = parseInt( selectedOption, 10 );
     this.setTableConfig(this.selectedOption, this.offset);
     this.totalPageCount = Math.ceil(this.tableData.length / this.selectedOption);
   }
 
   setOffset(item) {
+    // offset base on the selection of pagination
     this.setTableConfig(this.selectedOption, item.offset);
   }
 
